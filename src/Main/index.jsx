@@ -24,19 +24,25 @@ class Main extends React.Component {
   }
 
   updateMusicList() {
-    this.getSongsList().then((list) => {
-      const music = list.map(song => {
-        const date = format(song.lastModified.toString(), 'MM/DD/YYYY')
-        const fileName = song.key.slice(6)
-        const title = this.titleFromFileName(fileName)
-        return {
-          fileName,
-          title,
-          date,
-        }
+    this.getSongsList()
+      .then((list) => {
+        const music = list.map(song => {
+          const date = format(song.lastModified.toString(), 'MM/DD/YYYY')
+          const fileName = song.key.slice(6)
+          const title = this.titleFromFileName(fileName)
+          return {
+            fileName,
+            title,
+            date,
+          }
+        })
+        console.log(music)
+        this.setState({ music })
       })
-      this.setState({ music })
-    })
+      .catch((res) => {
+        alert('Error during get list')
+        console.log(res)
+      })
   }
 
   titleFromFileName = (fileName) => {

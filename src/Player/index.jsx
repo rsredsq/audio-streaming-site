@@ -29,7 +29,7 @@ class Player extends React.Component {
       const music = newProps.music
       const activeSongFile = prevState.activeSongFile
       if (!activeSongFile && music.length !== 0) {
-        this.chooseSong(music[0])
+        this.setSong(music[0])
         return {
           music: newProps.music,
         }
@@ -53,7 +53,8 @@ class Player extends React.Component {
     soundCloudAudio && soundCloudAudio.pause()
   }
 
-  setSong(song, afterSet) {
+  setSong(song, afterSet = () => {
+  }) {
     this.props
       .getSong(song.fileName)
       .then((songUrl) => {
@@ -65,6 +66,7 @@ class Player extends React.Component {
           if (this.mainSongRef.current) {
             this.mainSongRef.current.componentWillUnmount()
             this.mainSongRef.current.componentDidMount()
+            this.pauseMusic()
             afterSet()
           }
         })
@@ -73,7 +75,7 @@ class Player extends React.Component {
 
   chooseSong = (song) => {
     if (song.fileName !== this.state.activeSongFile) {
-      this.setSong(song, () => this.pauseMusic())
+      this.setSong(song, () => this.playMusic())
     } else {
       if (!this.state.playing) {
         this.playMusic()
