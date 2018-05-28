@@ -25,20 +25,8 @@ body {
     text-overflow: ellipsis;
 }
 
-.sb-soundplayer-volume-range::-webkit-slider-thumb {
-    margin-top: -0.5em !important;
-}
-
-.sb-soundplayer-volume-range::-moz-range-thumb {
-    margin-top: -0.5em !important;
-}
-
-.sb-soundplayer-volume-range::-ms-thumb {
-    margin-top: -0.5em !important;
-}
-
 .sb-soundplayer-volume-range {
-    cursor: pointer!important;
-    height: 20px!important;
-    margin-top: 0.5em!important;
+    cursor: pointer !important;
+    height: 20px !important;
+    margin-top: 0.5em !important;
 }
