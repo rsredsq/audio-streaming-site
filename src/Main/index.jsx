@@ -2,30 +2,21 @@ import React from 'react'
 import { Storage } from 'aws-amplify'
 import { withAuthenticator } from 'aws-amplify-react'
 import { format } from 'date-fns'
-import { Howl, Howler } from 'howler'
-import Table from './Table'
+import Player from '../Player'
+import styled from 'styled-components'
 
 const MUSIC_FOLDER = 'music/'
 
 Storage.configure({ level: 'private' })
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-grow: 1;
+`
+
 class Main extends React.Component {
   state = {
     music: [],
-  }
-
-  onFileDrop = files => {
-    files.forEach(file => {
-      console.log(file)
-      Storage.put(MUSIC_FOLDER + file.name, file)
-        .then(res => {
-          this.updateMusicList()
-        })
-        .catch(res => {
-          alert('Error during uploading song')
-          console.error(res)
-        })
-    })
   }
 
   componentDidMount() {
@@ -33,42 +24,53 @@ class Main extends React.Component {
   }
 
   updateMusicList() {
-    Storage.list(MUSIC_FOLDER).then(res => {
-      const music = res.map(it => {
+    this.getSongsList().then((list) => {
+      const music = list.map(song => {
+        const date = format(song.lastModified.toString(), 'MM/DD/YYYY')
+        const fileName = song.key.slice(6)
+        const title = this.titleFromFileName(fileName)
         return {
-          title: it.key.slice(6),
-          date: format(it.lastModified.toString(), 'MM/DD/YYYY'),
+          fileName,
+          title,
+          date,
         }
       })
       this.setState({ music })
     })
   }
 
-  playSong = song => {
-    Storage.get(MUSIC_FOLDER + song.title).then(res => {
-      const sound = new Howl({
-        src: [res],
-        html5: true,
-      })
+  titleFromFileName = (fileName) => {
+    const lastDot = fileName.indexOf('.')
+    return fileName.slice(0, lastDot)
+  }
 
-      sound.play()
-    })
+  getSongsList = () => {
+    return Storage.list(MUSIC_FOLDER)
+  }
+
+  getSong = song => {
+    return Storage.get(MUSIC_FOLDER + song)
+  }
+
+  addSong = song => {
+    return Storage.put(MUSIC_FOLDER + song, song)
   }
 
   deleteSong = song => {
-    Storage.remove(MUSIC_FOLDER + song.title).then(res => {
-      this.updateMusicList()
-    })
+    return Storage.remove(MUSIC_FOLDER + song)
   }
 
   render() {
     return (
-      <Table
-        music={this.state.music}
-        onRowClick={this.playSong}
-        onDrop={this.onFileDrop}
-        onDelete={this.deleteSong}
-      />
+      <Wrapper>
+        <Player
+          music={this.state.music}
+          // onError={}
+          getSong={this.getSong}
+          addSong={this.addSong}
+          deleteSong={this.deleteSong}
+        />
+      </Wrapper>
     )
   }
 }

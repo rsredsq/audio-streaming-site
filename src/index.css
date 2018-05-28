@@ -1,5 +1,37 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+html {
+    min-width: 768px;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    font-family: Roboto;
+    max-height: 100vh;
+    height: 100vh;
+}
+
+.truncated-text {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sb-soundplayer-volume-range::-webkit-slider-thumb {
+    margin-top: -0.5em !important;
+}
+
+.sb-soundplayer-volume-range::-moz-range-thumb {
+    margin-top: -0.5em !important;
+}
+
+.sb-soundplayer-volume-range::-ms-thumb {
+    margin-top: -0.5em !important;
 }

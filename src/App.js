@@ -2,12 +2,26 @@ import React, { Component } from 'react'
 import Amplify from 'aws-amplify'
 import aws_exports from './aws-exports'
 import Main from './Main'
+import Header from './Header'
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-height: 100vh;
+`;
 
 Amplify.configure(aws_exports)
 
 class App extends Component {
   render() {
-    return <Main />
+    return (
+      <Wrapper>
+        <Header/>
+        <Main/>
+      </Wrapper>
+    )
   }
 }
 

@@ -1,5 +1,6 @@
 --- !com.amazonaws.mobilehub.v0.Project 
 apps:
+  react-native: !com.amazonaws.mobilehub.v0.AppDO {}
   web: !com.amazonaws.mobilehub.v0.AppDO {}
 features:
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
@@ -8,7 +9,6 @@ features:
       visibility: public-global
     components:
       release: !com.amazonaws.mobilehub.v0.Bucket {}
-  mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint {}
   sign-in: !com.amazonaws.mobilehub.v0.SignIn 
     attributes:
       enabled: true
