@@ -65,7 +65,6 @@ class Main extends React.Component {
       <Wrapper>
         <Player
           music={this.state.music}
-          // onError={}
           getSong={this.getSong}
           addSong={this.addSong}
           deleteSong={this.deleteSong}

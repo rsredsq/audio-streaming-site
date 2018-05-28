@@ -18,10 +18,10 @@ class PlayList extends React.Component {
             {this.props.music.map((song, id) => (
               <Col sm={12} lgOffset={1} lg={10} key={`row-song-${id}`}>
                 <Song
-                  playing={id === this.props.activeSong}
+                  playing={song.fileName === this.props.activeSong}
                   date={song.date}
                   trackTitle={song.title}
-                  play={this.props.playSong}
+                  play={() => this.props.playSong(song)}
                   key={`song-${id}`}
                 />
               </Col>

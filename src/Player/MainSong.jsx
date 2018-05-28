@@ -7,6 +7,7 @@ import {
   Progress,
   PrevButton,
   NextButton,
+  Icons
 } from 'react-soundplayer/components'
 
 class MainSong extends React.Component {
@@ -22,7 +23,6 @@ class MainSong extends React.Component {
       trackTitle,
       volume,
     } = this.props
-
     return (
       <React.Fragment>
         <div className="flex-column items-center bg-darken-1 red rounded">
@@ -36,6 +36,7 @@ class MainSong extends React.Component {
               className="flex"
               playing={playing}
               seeking={seeking}
+              seekingIcon={Icons.SoundCloudLogoSVG()}
               soundCloudAudio={soundCloudAudio}
             />
             <NextButton
