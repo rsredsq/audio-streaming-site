@@ -3,6 +3,7 @@ import SearchMusic from './SearchMusic'
 import MainSong from './MainSong'
 import PlayList from './PlayList'
 import styled from 'styled-components'
+import DragZone from './DragZone'
 
 const Wrapper = styled.div`
   display: flex;
@@ -94,28 +95,36 @@ class Player extends React.Component {
 
   }
 
-  addSong = () => {
+  addSong = (song) => {
+    this.props.addSong(song)
+  }
 
+  onDrop = (files) => {
+    files.forEach((file) => {
+      this.addSong(file)
+    })
   }
 
   render() {
     return (
-      <Wrapper>
-        <SearchMusic/>
-        <PlayList
-          music={this.state.music}
-          activeSong={this.activeSongFile}
-          playing={this.state.playing}
-          playSong={this.chooseSong}
-          deleteSong={this.deleteSong}
-        />
-        <MainSong
-          streamUrl={this.state.activeSongUrl}
-          trackTitle={this.state.activeSongTitle}
-          nextSong={this.nextSong}
-          prevSong={this.prevSong}
-          ref={this.mainSongRef}/>
-      </Wrapper>
+      <DragZone onDrop={this.onDrop}>
+        <Wrapper>
+          <SearchMusic/>
+          <PlayList
+            music={this.state.music}
+            activeSong={this.activeSongFile}
+            playing={this.state.playing}
+            playSong={this.chooseSong}
+            deleteSong={this.deleteSong}
+          />
+          <MainSong
+            streamUrl={this.state.activeSongUrl}
+            trackTitle={this.state.activeSongTitle}
+            nextSong={this.nextSong}
+            prevSong={this.prevSong}
+            ref={this.mainSongRef}/>
+        </Wrapper>
+      </DragZone>
     )
   }
 }

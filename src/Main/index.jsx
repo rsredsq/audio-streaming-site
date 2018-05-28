@@ -53,11 +53,15 @@ class Main extends React.Component {
   }
 
   addSong = song => {
-    return Storage.put(MUSIC_FOLDER + song, song)
+    Storage.put(MUSIC_FOLDER + song.name, song).then(() => {
+      this.updateMusicList()
+    })
   }
 
   deleteSong = song => {
-    return Storage.remove(MUSIC_FOLDER + song)
+    Storage.remove(MUSIC_FOLDER + song).then(() => {
+      this.updateMusicList()
+    })
   }
 
   render() {
@@ -74,4 +78,4 @@ class Main extends React.Component {
   }
 }
 
-export default withAuthenticator(Main)
+export default Main
