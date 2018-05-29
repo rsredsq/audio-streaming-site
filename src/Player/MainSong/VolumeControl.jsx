@@ -18,7 +18,7 @@ export default ({ isMuted, volume, setVolume, muteUnmute }) => {
       <div>
         <VolumeControlRange
           value={volume}
-          onChange={(e) => setVolume(e.target.value)}/>
+          onChange={(e) => setVolume(parseFloat(e.target.value))}/>
       </div>
     </VolumeControlContainer>
   )

@@ -1,11 +1,12 @@
 import React from 'react'
 
-export const IconSVG = ({ className, style, children }) => (
+export const IconSVG = ({ className, style, viewBox, children }) => (
   <svg
     className={className}
     style={style}
+    stroke="currentColor"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 32 32"
+    viewBox={viewBox || '0 0 32 32'}
     fill="currentColor"
   >
     {children}
@@ -53,6 +54,7 @@ export const PrevIconSVG = ({ className, style }) => (
 // Volume
 export const VolumeIconLoudSVG = ({ className, style }) => (
   <IconSVG
+    viewBox="0 0 75 75"
     className={className}
     style={style}>
     <polygon
@@ -72,6 +74,7 @@ export const VolumeIconLoudSVG = ({ className, style }) => (
 
 export const VolumeIconMuteSVG = ({ className, style }) => (
   <IconSVG
+    viewBox="0 0 75 75"
     className={className}
     style={style}>
     <polygon
