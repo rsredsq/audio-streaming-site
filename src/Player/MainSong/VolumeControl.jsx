@@ -8,6 +8,12 @@ import {
 import { VolumeIconMuteSVG, VolumeIconLoudSVG } from '../icons'
 
 export default ({ isMuted, volume, setVolume, muteUnmute }) => {
+  const changeVolume = (e) => {
+    const volume = parseFloat(e.target.value)
+    if (isMuted) muteUnmute()
+    setVolume(volume)
+  }
+
   return (
     <VolumeControlContainer>
       <PlayerButton onClick={muteUnmute}>
@@ -18,7 +24,7 @@ export default ({ isMuted, volume, setVolume, muteUnmute }) => {
       <div>
         <VolumeControlRange
           value={volume}
-          onChange={(e) => setVolume(parseFloat(e.target.value))}/>
+          onChange={(e) => changeVolume(e)}/>
       </div>
     </VolumeControlContainer>
   )
