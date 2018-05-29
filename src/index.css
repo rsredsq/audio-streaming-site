@@ -3,30 +3,11 @@
 html {
     min-width: 768px;
     box-sizing: border-box;
+    font-family: Roboto;
 }
 
 *,
 *:before,
 *:after {
     box-sizing: inherit;
-}
-
-body {
-    font-family: Roboto;
-    max-height: 100vh;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.truncated-text {
-    flex: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.sb-soundplayer-volume-range {
-    cursor: pointer !important;
-    height: 20px !important;
-    margin-top: 0.5em !important;
 }

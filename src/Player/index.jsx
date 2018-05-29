@@ -1,15 +1,12 @@
 import React from 'react'
-import SearchMusic from './SearchMusic'
 import MainSong from './MainSong'
 import PlayList from './PlayList'
-import styled from 'styled-components'
 import DragZone from './DragZone'
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`
+// TODO: shuffle music
+// TODO: loop: 'none' // none, once, loop
+// TODO: search music
+// TODO: reordering music
 
 class Player extends React.Component {
   mainSongRef = React.createRef()
@@ -17,11 +14,8 @@ class Player extends React.Component {
   state = {
     activeSongFile: null,
     activeSongUrl: null,
-    playing: false,
-    activeSongTitle: '',
-    shuffle: false,
-    loop: 'none', // none, once, loop
-    music: [],
+    activeSongTitle: null,
+    songState: null, // pause, playing, loading
   }
 
   componentWillReceiveProps(newProps) {
@@ -39,22 +33,7 @@ class Player extends React.Component {
     })
   }
 
-  playMusic() {
-    if (!this.mainSongRef.current) return
-    const soundCloudAudio = this.mainSongRef.current.soundCloudAudio
-    this.setState({ playing: true })
-    soundCloudAudio && soundCloudAudio.play()
-  }
-
-  pauseMusic() {
-    if (!this.mainSongRef.current) return
-    const soundCloudAudio = this.mainSongRef.current.soundCloudAudio
-    this.setState({ playing: false })
-    soundCloudAudio && soundCloudAudio.pause()
-  }
-
-  setSong(song, afterSet = () => {
-  }) {
+  setSong(song, afterSet) {
     this.props
       .getSong(song.fileName)
       .then((songUrl) => {
@@ -67,7 +46,7 @@ class Player extends React.Component {
             this.mainSongRef.current.componentWillUnmount()
             this.mainSongRef.current.componentDidMount()
             this.pauseMusic()
-            afterSet()
+            afterSet && afterSet()
           }
         })
       })
@@ -107,25 +86,39 @@ class Player extends React.Component {
     })
   }
 
+  setSongState = (songState) => {
+    this.setState({ songState })
+  }
+
+  onError = () => {
+    alert('Error during playing audio')
+  }
+
   render() {
     return (
       <DragZone onDrop={this.onDrop}>
-        <Wrapper>
-          <SearchMusic/>
-          <PlayList
-            music={this.state.music}
-            activeSong={this.activeSongFile}
-            playing={this.state.playing}
-            playSong={this.chooseSong}
-            deleteSong={this.deleteSong}
-          />
-          <MainSong
-            streamUrl={this.state.activeSongUrl}
-            trackTitle={this.state.activeSongTitle}
-            nextSong={this.nextSong}
-            prevSong={this.prevSong}
-            ref={this.mainSongRef}/>
-        </Wrapper>
+        {/*<div>*/}
+        {/*<SearchMusic/>*/}
+        {/*<TitleSortButton/>*/}
+        {/*<DateSortButton/>*/}
+        {/*<AddSongButton/>*/}
+        {/*<RefreshListButton/>*/}
+        {/*</div>*/}
+        {/*<PlayList*/}
+        {/*music={this.props.music}*/}
+        {/*loadingList={this.props.loadingList}*/}
+        {/*activeSong={this.activeSongFile}*/}
+        {/*songState={this.songState}*/}
+        {/*playSong={this.chooseSong}*/}
+        {/*deleteSong={this.deleteSong}*/}
+        {/*/>*/}
+        <MainSong
+          streamUrl={this.state.activeSongUrl}
+          trackTitle={this.state.activeSongTitle}
+          onNextSong={this.nextSong}
+          onPrevSong={this.prevSong}
+          setSongState={this.setSongState}
+          onError={this.onError}/>
       </DragZone>
     )
   }

@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   flex-grow: 1;
 `
 
-class PlayList extends React.Component {
+class Index extends React.Component {
   render() {
     return (
       <Wrapper>
@@ -33,4 +33,4 @@ class PlayList extends React.Component {
   }
 }
 
-export default PlayList
+export default Index

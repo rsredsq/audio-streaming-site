@@ -15,12 +15,6 @@ const Overlay = styled.div`
   z-index: 1000;
 `
 
-const dragZoneStyle = {
-  display: 'flex',
-  width: '100%',
-  flex: '1',
-}
-
 class DragZone extends React.Component {
   state = {
     draggingFile: false,
@@ -43,7 +37,7 @@ class DragZone extends React.Component {
     return (
       <Dropzone
         disableClick
-        style={dragZoneStyle}
+        style={{}}
         accept="audio/*"
         onDrop={this.onDrop}
         onDragEnter={this.onDragEnter}

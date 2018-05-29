@@ -3,20 +3,15 @@ import { Storage } from 'aws-amplify'
 import { withAuthenticator } from 'aws-amplify-react'
 import { format } from 'date-fns'
 import Player from '../Player'
-import styled from 'styled-components'
 
 const MUSIC_FOLDER = 'music/'
 
 Storage.configure({ level: 'private' })
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-grow: 1;
-`
-
 class Main extends React.Component {
   state = {
     music: [],
+    loadingList: true,
   }
 
   componentDidMount() {
@@ -24,6 +19,7 @@ class Main extends React.Component {
   }
 
   updateMusicList() {
+    this.setState({ loadingList: true })
     this.getSongsList()
       .then((list) => {
         const music = list.map(song => {
@@ -36,12 +32,11 @@ class Main extends React.Component {
             date,
           }
         })
-        console.log(music)
-        this.setState({ music })
+        this.setState({ music, loadingList: true })
       })
       .catch((res) => {
+        this.setState({ loadingList: false })
         alert('Error during get list')
-        console.log(res)
       })
   }
 
@@ -72,14 +67,13 @@ class Main extends React.Component {
 
   render() {
     return (
-      <Wrapper>
-        <Player
-          music={this.state.music}
-          getSong={this.getSong}
-          addSong={this.addSong}
-          deleteSong={this.deleteSong}
-        />
-      </Wrapper>
+      <Player
+        music={this.state.music}
+        loadingList={this.state.loadingList}
+        getSong={this.getSong}
+        addSong={this.addSong}
+        deleteSong={this.deleteSong}
+      />
     )
   }
 }

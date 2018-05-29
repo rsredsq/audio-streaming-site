@@ -25,15 +25,6 @@ accepts@~1.3.4, accepts@~1.3.5:
     mime-types "~2.1.18"
     negotiator "0.6.1"
 
-ace-css@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/ace-css/-/ace-css-1.1.0.tgz#1ddd63b5f8f93221facfa934ca406e0a95b3309d"
-  dependencies:
-    basscss "^8.0.0"
-    basscss-addons "^1.0.0"
-    basscss-basic "^1.0.0"
-    colors.css "^2.3.0"
-
 acorn-dynamic-import@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/acorn-dynamic-import/-/acorn-dynamic-import-2.0.2.tgz#c752bd210bef679501b6c6cb7fc84f8f47158cc4"
@@ -1104,76 +1095,6 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
-basscss-addons@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/basscss-addons/-/basscss-addons-1.0.0.tgz#08611481c07a185544c84311197b6c18b648cee8"
-  dependencies:
-    colors.css "^3.0.0"
-
-basscss-align@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/basscss-align/-/basscss-align-1.0.2.tgz#294aa689d6f99da86e4af4c5c2892870855c1c37"
-
-basscss-basic@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/basscss-basic/-/basscss-basic-1.0.0.tgz#fa5b7a5e696f2f970a85ff3f62980a6851931a57"
-
-basscss-border@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/basscss-border/-/basscss-border-4.0.2.tgz#14b4506329b90cb14abe5f4d3473e9fe9202df2e"
-
-basscss-flexbox@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/basscss-flexbox/-/basscss-flexbox-1.0.2.tgz#0f85e8c50618c023c5cff1227e6b3538fc0d9a32"
-
-basscss-grid@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/basscss-grid/-/basscss-grid-2.0.0.tgz#6f4c3198e786a38529f8362bc3b3bce5254c1369"
-
-basscss-hide@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/basscss-hide/-/basscss-hide-1.0.1.tgz#34bc138bba867c6c49ab8682a610ef495e47d750"
-
-basscss-layout@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/basscss-layout/-/basscss-layout-3.1.0.tgz#f9f392e480da66657d9fe5de9ca4c07c579c3a4e"
-
-basscss-margin@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/basscss-margin/-/basscss-margin-1.0.8.tgz#f9845a6eabc806b4ddcd956a461ac90a43d7e283"
-
-basscss-padding@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/basscss-padding/-/basscss-padding-1.1.3.tgz#69db799414e6dd58bed83776952cc299e2e6874e"
-
-basscss-position@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/basscss-position/-/basscss-position-2.0.3.tgz#467180a1f8f386e9072ed8d08294d2a6e0ba4305"
-
-basscss-type-scale@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/basscss-type-scale/-/basscss-type-scale-1.0.5.tgz#23bf5e41c9d142c8061cf9829ccf23e9b3258ec7"
-
-basscss-typography@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/basscss-typography/-/basscss-typography-3.0.4.tgz#ec946a2bad8dd1af97be9ea108ad4bb7be932464"
-
-basscss@^8.0.0:
-  version "8.0.4"
-  resolved "https://registry.yarnpkg.com/basscss/-/basscss-8.0.4.tgz#b371a2ce25aeb9b322302f37f4e425753dd29ae1"
-  dependencies:
-    basscss-align "^1.0.2"
-    basscss-border "^4.0.2"
-    basscss-flexbox "^1.0.2"
-    basscss-grid "^2.0.0"
-    basscss-hide "^1.0.1"
-    basscss-layout "^3.1.0"
-    basscss-margin "^1.0.8"
-    basscss-padding "^1.1.3"
-    basscss-position "^2.0.3"
-    basscss-type-scale "^1.0.5"
-    basscss-typography "^3.0.4"
-
 batch@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/batch/-/batch-0.6.1.tgz#dc34314f4e679318093fc760272525f94bf25c16"
@@ -1582,10 +1503,6 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
-
 clean-css@4.1.x:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.1.11.tgz#2ecdf145aba38f54740f26cefd0ff3e03e125d6a"
@@ -1678,14 +1595,6 @@ colormin@^1.0.5:
     color "^0.11.0"
     css-color-names "0.0.4"
     has "^1.0.1"
-
-colors.css@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/colors.css/-/colors.css-2.3.0.tgz#e8953837543e19d98e2917ff0b998f6db286213b"
-
-colors.css@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/colors.css/-/colors.css-3.0.0.tgz#511cf42fb8a7199a8cbef49c88a4ea4f1d8f9efc"
 
 colors@~1.1.2:
   version "1.1.2"
@@ -2070,6 +1979,10 @@ deep-extend@^0.6.0:
 deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
+
+deepmerge@^2.0.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.1.1.tgz#e862b4e45ea0555072bf51e7fd0d9845170ae768"
 
 default-require-extensions@^1.0.0:
   version "1.0.0"
@@ -3314,7 +3227,7 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.0:
+hoist-non-react-statics@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.0.tgz#d2ca2dfc19c5a91c5a6615ce8e564ef0347e2a40"
 
@@ -4373,6 +4286,10 @@ load-json-file@^2.0.0:
     parse-json "^2.2.0"
     pify "^2.0.0"
     strip-bom "^3.0.0"
+
+load-script@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/load-script/-/load-script-1.0.0.tgz#0491939e0bee5643ee494a7e3da3d2bac70c6ca4"
 
 loader-fs-cache@^1.0.0:
   version "1.0.1"
@@ -5603,7 +5520,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
   dependencies:
@@ -5793,6 +5710,14 @@ react-is@^16.3.1:
   version "16.4.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.0.tgz#cc9fdc855ac34d2e7d9d2eb7059bbc240d35ffcf"
 
+react-player@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/react-player/-/react-player-1.6.2.tgz#15b9ab4805da31554c783d377549f75b6e47a642"
+  dependencies:
+    deepmerge "^2.0.1"
+    load-script "^1.0.0"
+    prop-types "^15.5.6"
+
 react-scripts@1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-1.1.4.tgz#d5c230e707918d6dd2d06f303b10f5222d017c88"
@@ -5837,16 +5762,6 @@ react-scripts@1.1.4:
     whatwg-fetch "2.0.3"
   optionalDependencies:
     fsevents "^1.1.3"
-
-react-soundplayer@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/react-soundplayer/-/react-soundplayer-1.0.4.tgz#333b0edc41694a3f883117898d962af061bb8d3f"
-  dependencies:
-    classnames "^2.2.5"
-    hoist-non-react-statics "^2.3.1"
-    object-assign "^4.1.1"
-    prop-types "^15.6.0"
-    soundcloud-audio "^1.2.2"
 
 react@^16.4.0:
   version "16.4.0"
@@ -6422,10 +6337,6 @@ sort-keys@^1.0.0:
   resolved "https://registry.yarnpkg.com/sort-keys/-/sort-keys-1.1.2.tgz#441b6d4d346798f1b4e49e8920adfba0e543f9ad"
   dependencies:
     is-plain-obj "^1.0.0"
-
-soundcloud-audio@^1.2.2:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/soundcloud-audio/-/soundcloud-audio-1.3.1.tgz#d1266affc3016c8eb154f937fe216162e0883b34"
 
 source-list-map@^2.0.0:
   version "2.0.0"
