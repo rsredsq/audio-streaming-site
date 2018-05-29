@@ -141,7 +141,7 @@ class MainSong extends React.Component {
           onBuffer={() => this.setSongState('loading')}
           onSeek={() => this.setSongState('loading')}
           onEnded={onNextSong}
-          onError={onError}
+          onError={() => onError('Couldn\'t load song')}
           onProgress={this.onProgress}
           onDuration={this.onDuration}
         />

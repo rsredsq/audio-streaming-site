@@ -3,6 +3,7 @@ import { Storage } from 'aws-amplify'
 import { withAuthenticator } from 'aws-amplify-react'
 import { format } from 'date-fns'
 import Player from '../Player'
+import { ToastContainer, toast } from 'react-toastify'
 
 const MUSIC_FOLDER = 'music/'
 
@@ -36,7 +37,7 @@ class Main extends React.Component {
       })
       .catch((res) => {
         this.setState({ loadingList: false })
-        alert('Error during get list')
+        this.onError('Error during get list')
       })
   }
 
@@ -65,15 +66,62 @@ class Main extends React.Component {
     })
   }
 
+  onError = mes => {
+    toast.error(mes, {
+      position: 'bottom-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    })
+  }
+
+  onInfo = mes => {
+    toast.info(mes, {
+      position: 'bottom-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    })
+  }
+
+  onSuccess = mes => {
+    toast.success(mes, {
+      position: 'bottom-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    })
+  }
+
   render() {
     return (
-      <Player
-        music={this.state.music}
-        loadingList={this.state.loadingList}
-        getSong={this.getSong}
-        addSong={this.addSong}
-        deleteSong={this.deleteSong}
-      />
+      <React.Fragment>
+        <Player
+          music={this.state.music}
+          loadingList={this.state.loadingList}
+          getSong={this.getSong}
+          addSong={this.addSong}
+          deleteSong={this.deleteSong}
+          onError={this.onError}
+        />
+        <ToastContainer
+          position="bottom-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnVisibilityChange
+          draggable
+          pauseOnHover
+        />
+      </React.Fragment>
     )
   }
 }

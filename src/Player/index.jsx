@@ -91,7 +91,7 @@ class Player extends React.Component {
   }
 
   onError = () => {
-    alert('Error during playing audio')
+    this.props.onError('Error during playing audio')
   }
 
   render() {
