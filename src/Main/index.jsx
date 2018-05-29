@@ -22,7 +22,7 @@ class Main extends React.Component {
   updateMusicList() {
     this.setState({ loadingList: true })
     this.getSongsList()
-      .then((list) => {
+      .then(list => {
         const music = list.map(song => {
           const date = format(song.lastModified.toString(), 'MM/DD/YYYY')
           const fileName = song.key.slice(6)
@@ -35,13 +35,13 @@ class Main extends React.Component {
         })
         this.setState({ music, loadingList: true })
       })
-      .catch((res) => {
+      .catch(res => {
         this.setState({ loadingList: false })
         this.onError('Error during get list')
       })
   }
 
-  titleFromFileName = (fileName) => {
+  titleFromFileName = fileName => {
     const lastDot = fileName.indexOf('.')
     return fileName.slice(0, lastDot)
   }
@@ -126,4 +126,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main
+export default withAuthenticator(Main, true)

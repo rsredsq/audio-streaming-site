@@ -4,7 +4,7 @@ import aws_exports from './aws-exports'
 import Main from './Main'
 import Header from './Header'
 import styled from 'styled-components'
-import { AmplifyTheme, Authenticator } from 'aws-amplify-react'
+import { Authenticator } from 'aws-amplify-react'
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,19 +13,14 @@ const Wrapper = styled.div`
   max-height: 100vh;
 `
 
-const MyContainer = Object.assign({}, AmplifyTheme.Container, { display: 'flex', flexGrow: '1', flexDirection: 'column' })
-const MyTheme = Object.assign({}, AmplifyTheme, { container: MyContainer })
-
 Amplify.configure(aws_exports)
 
 class App extends Component {
   render() {
     return (
       <Wrapper>
-        <Header/>
-        <Authenticator theme={MyTheme} >
-          <Main/>
-        </Authenticator>
+        <Header />
+        <Main />
       </Wrapper>
     )
   }
