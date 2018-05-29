@@ -70,7 +70,7 @@ class Main extends React.Component {
   onError = mes => {
     toast.error(`🔥 ${mes}`, {
       position: 'bottom-center',
-      autoClose: 5000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -81,7 +81,7 @@ class Main extends React.Component {
   onInfo = mes => {
     toast.info(`🚀 ${mes}`, {
       position: 'bottom-center',
-      autoClose: 5000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -92,7 +92,7 @@ class Main extends React.Component {
   onSuccess = mes => {
     toast.success(`🎵 ${mes}`, {
       position: 'bottom-center',
-      autoClose: 5000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
