@@ -9,8 +9,6 @@ import DragZone from './DragZone'
 // TODO: reordering music
 
 class Player extends React.Component {
-  mainSongRef = React.createRef()
-
   state = {
     activeSongFile: null,
     activeSongUrl: null,
@@ -18,38 +16,57 @@ class Player extends React.Component {
     songState: null, // pause, playing, loading
   }
 
-  componentWillReceiveProps(newProps) {
-    this.setState((prevState) => {
-      const music = newProps.music
-      const activeSongFile = prevState.activeSongFile
-      if (!activeSongFile && music.length !== 0) {
-        this.setSong(music[0])
-      }
+  constructor(props) {
+    super(props)
 
-      return { music: newProps.music }
-    })
+    const music = props.music
+    const activeSongFile = this.state.activeSongFile
+    if (!activeSongFile && music.length !== 0) {
+      this.setSong(music[0])
+    }
+  }
+
+  componentWillReceiveProps(newProps) {
+    const music = newProps.music
+    const activeSongFile = this.state.activeSongFile
+    if (!activeSongFile && music.length !== 0) {
+      this.setSong(music[0])
+    }
   }
 
   setSong(song) {
+    console.log('setSong - loading')
+    this.setState({
+      activeSongFile: song.fileName,
+      activeSongTitle: song.title,
+      activeSongUrl: null,
+      songState: 'loading',
+    })
+
     this.props
       .getSong(song.fileName)
       .then((songUrl) => {
+        console.log('setSong - pause')
         this.setState({
-          activeSongFile: song.fileName,
           activeSongUrl: songUrl,
-          activeSongTitle: song.title,
+          songState: 'pause',
         })
       })
   }
 
   chooseSong = (song) => {
     if (song.fileName !== this.state.activeSongFile) {
-      this.setSong(song, () => this.playMusic())
+      console.log('chooseSong - playing')
+      this.setSong(song)
+      this.setState({ songState: 'playing' })
     } else {
-      if (!this.state.playing) {
-        this.playMusic()
-      } else {
-        this.pauseMusic()
+      if (this.state.songState === 'pause') {
+        console.log('chooseSong - playing')
+        this.setState({ songState: 'playing' })
+      }
+      if (this.state.songState === 'playing') {
+        console.log('chooseSong - pause')
+        this.setState({ songState: 'pause' })
       }
     }
   }
@@ -77,6 +94,7 @@ class Player extends React.Component {
   }
 
   setSongState = (songState) => {
+    console.log('setSongState', songState)
     this.setState({ songState })
   }
 
@@ -95,13 +113,15 @@ class Player extends React.Component {
           music={this.props.music}
           loadingList={this.props.loadingList}
           activeSong={this.activeSongFile}
-          songState={this.songState}
+          songState={this.state.songState}
           playSong={this.chooseSong}
           deleteSong={this.deleteSong}
         />
         <MainSong
           streamUrl={this.state.activeSongUrl}
           trackTitle={this.state.activeSongTitle}
+          songState={this.state.songState}
+          playing={this.state.songState === 'playing'}
           onNextSong={this.nextSong}
           onPrevSong={this.prevSong}
           setSongState={this.setSongState}

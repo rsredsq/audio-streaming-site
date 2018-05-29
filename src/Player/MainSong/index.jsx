@@ -11,7 +11,6 @@ import { PlayerControls, MainSongContainer } from '../styled'
 
 class MainSong extends React.Component {
   state = {
-    playing: false,
     volume: 0.5,
     seeking: false,
     muted: false,
@@ -19,8 +18,6 @@ class MainSong extends React.Component {
     played: 0,
     playedSeconds: 0,
     loaded: 0,
-    loadedSeconds: 0,
-    songState: null,
   }
 
   ref = (player) => {
@@ -28,19 +25,17 @@ class MainSong extends React.Component {
   }
 
   setSongState = (songState) => {
-    this.setState({ songState }, () => {
-      this.props.setSongState(songState)
-    })
-  }
-
-  setPlaying = (playing) => {
-    this.setState({ playing })
+    this.props.setSongState(songState)
   }
 
   playPause = () => {
-    this.setState((prevState) => ({
-      playing: !prevState.playing,
-    }))
+    const { songState, setSongState } = this.props
+    if (songState === 'pause') {
+      setSongState('playing')
+    }
+    if (songState === 'playing') {
+      setSongState('pause')
+    }
   }
 
   setVolume = (volume) => {
@@ -63,18 +58,6 @@ class MainSong extends React.Component {
 
   setPlayed = (played) => {
     this.setState({ played })
-  }
-
-  setPlayedSeconds = (playedSeconds) => {
-    this.setState({ playedSeconds })
-  }
-
-  setLoaded = (loaded) => {
-    this.setState({ loaded })
-  }
-
-  setLoadedSeconds = (loadedSeconds) => {
-    this.setState({ loadedSeconds })
   }
 
   onSeekMouseDown = () => {
@@ -112,6 +95,8 @@ class MainSong extends React.Component {
       onPrevSong,
       onNextSong,
       onError,
+      songState,
+      playing,
     } = this.props
 
     const {
@@ -121,8 +106,6 @@ class MainSong extends React.Component {
       playedSeconds,
       played,
       loaded,
-      loadedSeconds,
-      songState,
     } = this.state
 
     return (
@@ -131,9 +114,9 @@ class MainSong extends React.Component {
           ref={this.ref}
           style={{ display: 'none' }}
           url={streamUrl}
-          playing={this.state.playing}
-          volume={this.state.volume}
-          muted={this.state.muted}
+          playing={playing}
+          volume={volume}
+          muted={muted}
           onReady={() => this.setSongState('pause')}
           onStart={() => this.setSongState('playing')}
           onPlay={() => this.setSongState('playing')}
