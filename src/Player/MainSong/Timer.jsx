@@ -1,5 +1,5 @@
 import React from 'react'
-import { Timer } from './styled'
+import { Timer } from '../styled'
 
 export default ({ duration, currentTime }) => {
   const prettyTime = (time) => {

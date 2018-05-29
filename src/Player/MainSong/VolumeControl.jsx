@@ -4,7 +4,7 @@ import {
   playerIconStyle,
   VolumeControlContainer,
   VolumeControlRange,
-} from './styled'
+} from '../styled'
 import { VolumeIconMuteSVG, VolumeIconLoudSVG } from '../icons'
 
 export default ({ isMuted, volume, setVolume, muteUnmute }) => {

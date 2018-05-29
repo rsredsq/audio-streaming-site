@@ -1,5 +1,5 @@
 import React from 'react'
-import { TrackTitle } from './styled'
+import { TrackTitle } from '../styled'
 
 export default ({ children }) => {
   return (

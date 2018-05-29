@@ -1,6 +1,6 @@
 import React from 'react'
 import { NextIconSVG } from '../icons'
-import { PlayerButton, playerIconStyle } from './styled'
+import { PlayerButton, playerIconStyle } from '../styled'
 
 export default ({ onNextClick }) => {
   return (

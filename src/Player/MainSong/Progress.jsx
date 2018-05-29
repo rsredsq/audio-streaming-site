@@ -3,7 +3,7 @@ import {
   PlayerProgressContainer,
   PlayerProgressPlayed,
   PlayerProgressLoaded,
-} from './styled'
+} from '../styled'
 
 export default ({ played, loaded, onSeekMouseDown, onSeekChange, onSeekMouseUp }) => {
   const xPos = (e) => {

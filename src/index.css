@@ -11,3 +11,8 @@ html {
 *:after {
     box-sizing: inherit;
 }
+
+.amplify-nav {
+    display: flex !important;
+    justify-content: center !important;
+}

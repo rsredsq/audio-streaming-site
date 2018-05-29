@@ -9,7 +9,8 @@ export const playerIconStyle = {
 
 export const MainSongContainer = styled.div`
   position: absolute;
-  width: 100%;
+  left: 0;
+  right: 0;
   bottom: 0;
   display: flex;
   flex-direction: column;
@@ -17,6 +18,26 @@ export const MainSongContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.0625);
   color: #ff4136;
   border-radius: 3px;
+`
+
+export const ListSongContainer = styled.div`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.0625);
+  color: #ff4136;
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
+  padding: 0.2rem;
+`
+
+export const TrackDate = styled.h5`
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 1rem;
+  text-transform: uppercase;
 `
 
 export const PlayerButton = styled.button`

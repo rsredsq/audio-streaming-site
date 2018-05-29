@@ -24,16 +24,13 @@ class Player extends React.Component {
       const activeSongFile = prevState.activeSongFile
       if (!activeSongFile && music.length !== 0) {
         this.setSong(music[0])
-        return {
-          music: newProps.music,
-        }
       }
 
       return { music: newProps.music }
     })
   }
 
-  setSong(song, afterSet) {
+  setSong(song) {
     this.props
       .getSong(song.fileName)
       .then((songUrl) => {
@@ -41,13 +38,6 @@ class Player extends React.Component {
           activeSongFile: song.fileName,
           activeSongUrl: songUrl,
           activeSongTitle: song.title,
-        }, () => {
-          if (this.mainSongRef.current) {
-            this.mainSongRef.current.componentWillUnmount()
-            this.mainSongRef.current.componentDidMount()
-            this.pauseMusic()
-            afterSet && afterSet()
-          }
         })
       })
   }
@@ -98,20 +88,17 @@ class Player extends React.Component {
     return (
       <DragZone onDrop={this.onDrop}>
         {/*<div>*/}
-        {/*<SearchMusic/>*/}
-        {/*<TitleSortButton/>*/}
-        {/*<DateSortButton/>*/}
         {/*<AddSongButton/>*/}
         {/*<RefreshListButton/>*/}
         {/*</div>*/}
-        {/*<PlayList*/}
-        {/*music={this.props.music}*/}
-        {/*loadingList={this.props.loadingList}*/}
-        {/*activeSong={this.activeSongFile}*/}
-        {/*songState={this.songState}*/}
-        {/*playSong={this.chooseSong}*/}
-        {/*deleteSong={this.deleteSong}*/}
-        {/*/>*/}
+        <PlayList
+          music={this.props.music}
+          loadingList={this.props.loadingList}
+          activeSong={this.activeSongFile}
+          songState={this.songState}
+          playSong={this.chooseSong}
+          deleteSong={this.deleteSong}
+        />
         <MainSong
           streamUrl={this.state.activeSongUrl}
           trackTitle={this.state.activeSongTitle}

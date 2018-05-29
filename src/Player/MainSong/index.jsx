@@ -7,7 +7,7 @@ import Timer from './Timer'
 import Progress from './Progress'
 import VolumeControl from './VolumeControl'
 import TrackTitle from './TrackTitle'
-import { PlayerControls, MainSongContainer } from './styled'
+import { PlayerControls, MainSongContainer } from '../styled'
 
 class MainSong extends React.Component {
   state = {

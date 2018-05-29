@@ -1,6 +1,6 @@
 import React from 'react'
 import { PrevIconSVG } from '../icons'
-import { PlayerButton, playerIconStyle } from './styled'
+import { PlayerButton, playerIconStyle } from '../styled'
 
 export default ({ onPrevClick }) => {
   return (
