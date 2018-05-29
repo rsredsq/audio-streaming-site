@@ -8,6 +8,9 @@ export const playerIconStyle = {
 }
 
 export const MainSongContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
