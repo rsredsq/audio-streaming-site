@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify'
 
 const MUSIC_FOLDER = 'music/'
 
-Storage.configure({ level: 'private' })
+Storage.configure({ level: 'private', expires: 3600 })
 
 class Main extends React.Component {
   state = {
@@ -56,6 +56,7 @@ class Main extends React.Component {
   }
 
   addSong = song => {
+    this.onInfo('Loading start')
     Storage.put(MUSIC_FOLDER + song.name, song)
       .then(() => {
         this.onInfo('Song was added')
@@ -68,7 +69,8 @@ class Main extends React.Component {
   }
 
   deleteSong = song => {
-    Storage.remove(MUSIC_FOLDER + song)
+    this.onInfo('Deleting start')
+    Storage.remove(MUSIC_FOLDER + song.fileName)
       .then(() => {
         this.onInfo('Song was deleted')
         this.updateMusicList()

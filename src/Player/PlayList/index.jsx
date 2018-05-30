@@ -22,6 +22,7 @@ class PlayList extends React.Component {
                   active={song.fileName === this.props.activeSong}
                   date={song.date}
                   trackTitle={song.title}
+                  deleteSong={() => this.props.deleteSong(song)}
                   chooseSong={() => this.props.chooseSong(song)}
                   key={`song-${id}`}
                 />

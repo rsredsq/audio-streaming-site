@@ -84,8 +84,8 @@ class Player extends React.Component {
     }
   }
 
-  deleteSong = () => {
-
+  deleteSong = (song) => {
+    this.props.deleteSong(song)
   }
 
   addSong = (song) => {
@@ -105,6 +105,7 @@ class Player extends React.Component {
 
   onError = () => {
     this.props.onError('Error during playing audio')
+    this.nextSong()
   }
 
   render() {
