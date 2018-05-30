@@ -74,6 +74,7 @@ class MainSong extends React.Component {
   }
 
   seekTo = (amount) => {
+    this.props.setSongState('loading')
     this.player.seekTo(amount)
   }
 
@@ -117,12 +118,11 @@ class MainSong extends React.Component {
           playing={playing}
           volume={volume}
           muted={muted}
-          onReady={() => this.setSongState('pause')}
           onStart={() => this.setSongState('playing')}
           onPlay={() => this.setSongState('playing')}
           onPause={() => this.setSongState('pause')}
           onBuffer={() => this.setSongState('loading')}
-          onSeek={() => this.setSongState('loading')}
+          onSeek={() => this.setSongState('playing')}
           onEnded={onNextSong}
           onError={() => onError('Couldn\'t load song')}
           onProgress={this.onProgress}

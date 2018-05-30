@@ -16,16 +16,6 @@ class Player extends React.Component {
     songState: null, // pause, playing, loading
   }
 
-  constructor(props) {
-    super(props)
-
-    const music = props.music
-    const activeSongFile = this.state.activeSongFile
-    if (!activeSongFile && music.length !== 0) {
-      this.setSong(music[0])
-    }
-  }
-
   componentWillReceiveProps(newProps) {
     const music = newProps.music
     const activeSongFile = this.state.activeSongFile
@@ -109,19 +99,19 @@ class Player extends React.Component {
         {/*<AddSongButton/>*/}
         {/*<RefreshListButton/>*/}
         {/*</div>*/}
-        <PlayList
-          music={this.props.music}
-          loadingList={this.props.loadingList}
-          activeSong={this.activeSongFile}
-          songState={this.state.songState}
-          playSong={this.chooseSong}
-          deleteSong={this.deleteSong}
-        />
+        {/*<PlayList*/}
+        {/*music={this.props.music}*/}
+        {/*loadingList={this.props.loadingList}*/}
+        {/*activeSong={this.activeSongFile}*/}
+        {/*songState={this.state.songState}*/}
+        {/*playSong={this.chooseSong}*/}
+        {/*deleteSong={this.deleteSong}*/}
+        {/*/>*/}
         <MainSong
           streamUrl={this.state.activeSongUrl}
           trackTitle={this.state.activeSongTitle}
           songState={this.state.songState}
-          playing={this.state.songState === 'playing'}
+          playing={this.state.songState !== 'pause'}
           onNextSong={this.nextSong}
           onPrevSong={this.prevSong}
           setSongState={this.setSongState}
