@@ -9,7 +9,7 @@ export const playerIconStyle = {
 
 export const MainSongContainer = styled.div`
   position: fixed;
-  z-index: 1000;
+  z-index: 100;
   left: 0;
   right: 0;
   bottom: 0;
