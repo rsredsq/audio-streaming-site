@@ -19,7 +19,7 @@ class Main extends React.Component {
     this.updateMusicList()
   }
 
-  updateMusicList() {
+  updateMusicList = () => {
     this.setState({ loadingList: true })
     this.getSongsList()
       .then(list => {
@@ -33,7 +33,7 @@ class Main extends React.Component {
             date,
           }
         })
-        this.setState({ music, loadingList: true })
+        this.setState({ music, loadingList: false })
         this.onSuccess('Playlist was updated')
       })
       .catch(res => {
@@ -43,7 +43,7 @@ class Main extends React.Component {
   }
 
   titleFromFileName = fileName => {
-    const lastDot = fileName.indexOf('.')
+    const lastDot = fileName.lastIndexOf('.')
     return fileName.slice(0, lastDot)
   }
 
@@ -82,7 +82,7 @@ class Main extends React.Component {
   onError = mes => {
     toast.error(`🔥 ${mes}`, {
       position: 'bottom-center',
-      autoClose: 2000,
+      autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -93,7 +93,7 @@ class Main extends React.Component {
   onInfo = mes => {
     toast.info(`🚀 ${mes}`, {
       position: 'bottom-center',
-      autoClose: 2000,
+      autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -104,7 +104,7 @@ class Main extends React.Component {
   onSuccess = mes => {
     toast.success(`🎵 ${mes}`, {
       position: 'bottom-center',
-      autoClose: 2000,
+      autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -118,6 +118,7 @@ class Main extends React.Component {
         <Player
           music={this.state.music}
           loadingList={this.state.loadingList}
+          updateMusicList={this.updateMusicList}
           getSong={this.getSong}
           addSong={this.addSong}
           deleteSong={this.deleteSong}

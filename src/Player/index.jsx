@@ -2,6 +2,8 @@ import React from 'react'
 import MainSong from './MainSong'
 import PlayList from './PlayList'
 import DragZone from './DragZone'
+import RefreshListButton from './RefreshListButton'
+import { PlayListControlsContainer } from './styled'
 
 class Player extends React.Component {
   state = {
@@ -108,13 +110,14 @@ class Player extends React.Component {
   render() {
     return (
       <DragZone onDrop={this.addSongs}>
-        {/*<div>*/}
-        {/*<AddSongButton/>*/}
-        {/*<RefreshListButton/>*/}
-        {/*</div>*/}
+        <PlayListControlsContainer>
+          <RefreshListButton
+            onRefresh={this.props.updateMusicList}
+            refreshing={this.props.loadingList}
+          />
+        </PlayListControlsContainer>
         <PlayList
           music={this.props.music}
-          loadingList={this.props.loadingList}
           activeSong={this.state.activeSongFile}
           songState={this.state.songState}
           chooseSong={this.chooseSong}

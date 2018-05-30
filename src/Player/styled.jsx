@@ -217,3 +217,22 @@ export const VolumeControlRange = styled.input.attrs({
     background: #fc561e;
   }
 `
+
+export const RefreshListButton = styled.button`
+  border: none;
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #e7e7e7;
+  color: black;
+`
+
+export const PlayListControlsContainer = styled.div`
+  display: flex;
+  margin: 0.5rem 0;
+  justify-content: center;
+  align-items: center;
+`
