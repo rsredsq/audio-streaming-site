@@ -6,8 +6,7 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  margin: 0.5rem 0;
+  margin: 0.5rem 0 5rem 0.5rem;
 `
 
 class PlayList extends React.Component {
@@ -23,7 +22,7 @@ class PlayList extends React.Component {
                   active={song.fileName === this.props.activeSong}
                   date={song.date}
                   trackTitle={song.title}
-                  play={() => this.props.playSong(song)}
+                  chooseSong={() => this.props.chooseSong(song)}
                   key={`song-${id}`}
                 />
               </Col>

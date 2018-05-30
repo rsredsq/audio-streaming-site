@@ -119,7 +119,6 @@ class MainSong extends React.Component {
           volume={volume}
           muted={muted}
           onStart={() => this.setSongState('playing')}
-          onPlay={() => this.setSongState('playing')}
           onPause={() => this.setSongState('pause')}
           onBuffer={() => this.setSongState('loading')}
           onSeek={() => this.setSongState('playing')}

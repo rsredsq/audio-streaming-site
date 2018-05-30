@@ -56,15 +56,27 @@ class Main extends React.Component {
   }
 
   addSong = song => {
-    Storage.put(MUSIC_FOLDER + song.name, song).then(() => {
-      this.updateMusicList()
-    })
+    Storage.put(MUSIC_FOLDER + song.name, song)
+      .then(() => {
+        this.onInfo('Song was added')
+        this.updateMusicList()
+      })
+      .catch((res) => {
+        this.onError('Error during add song')
+        this.updateMusicList()
+      })
   }
 
   deleteSong = song => {
-    Storage.remove(MUSIC_FOLDER + song).then(() => {
-      this.updateMusicList()
-    })
+    Storage.remove(MUSIC_FOLDER + song)
+      .then(() => {
+        this.onInfo('Song was deleted')
+        this.updateMusicList()
+      })
+      .catch((res) => {
+        this.onError('Error during delete song')
+        this.updateMusicList()
+      })
   }
 
   onError = mes => {

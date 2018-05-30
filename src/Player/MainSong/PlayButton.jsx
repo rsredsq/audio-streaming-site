@@ -6,7 +6,7 @@ export default ({ playPause, songState }) => {
   return (
     <PlayerButton type="button"
                   onClick={() => {
-                    if (songState === 'pause' || songState === 'playing') playPause()
+                    if (songState !== 'loading') playPause && playPause()
                   }}>
       {(songState === 'pause' || !songState) && <PlayIconSVG style={playerIconStyle}/>}
       {songState === 'playing' && <PauseIconSVG style={playerIconStyle}/>}

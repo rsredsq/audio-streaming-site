@@ -8,14 +8,15 @@ export const playerIconStyle = {
 }
 
 export const MainSongContainer = styled.div`
-  position: absolute;
+  position: fixed;
+  z-index: 1000;
   left: 0;
   right: 0;
   bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.0625);
+  background-color: #444;
   color: #ff4136;
   border-radius: 3px;
 `

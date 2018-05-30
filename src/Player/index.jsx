@@ -3,11 +3,6 @@ import MainSong from './MainSong'
 import PlayList from './PlayList'
 import DragZone from './DragZone'
 
-// TODO: shuffle music
-// TODO: loop: 'none' // none, once, loop
-// TODO: search music
-// TODO: reordering music
-
 class Player extends React.Component {
   state = {
     activeSongFile: null,
@@ -20,12 +15,12 @@ class Player extends React.Component {
     const music = newProps.music
     const activeSongFile = this.state.activeSongFile
     if (!activeSongFile && music.length !== 0) {
-      this.setSong(music[0])
+      this.setSong(music[0], 'pause')
     }
   }
 
-  setSong(song) {
-    console.log('setSong - loading')
+  setSong(song, songState = 'loading') {
+    console.log('setSong - loading', 'After', songState)
     this.setState({
       activeSongFile: song.fileName,
       activeSongTitle: song.title,
@@ -36,19 +31,17 @@ class Player extends React.Component {
     this.props
       .getSong(song.fileName)
       .then((songUrl) => {
-        console.log('setSong - pause')
         this.setState({
           activeSongUrl: songUrl,
-          songState: 'pause',
+          songState: songState,
         })
       })
   }
 
   chooseSong = (song) => {
     if (song.fileName !== this.state.activeSongFile) {
-      console.log('chooseSong - playing')
-      this.setSong(song)
-      this.setState({ songState: 'playing' })
+      if (!this.state.activeSongFile) this.setSong(song, 'pause')
+      else this.setSong(song)
     } else {
       if (this.state.songState === 'pause') {
         console.log('chooseSong - playing')
@@ -62,11 +55,31 @@ class Player extends React.Component {
   }
 
   nextSong = () => {
+    const { music } = this.props
+    if (music.length === 0) return
+    const { activeSongFile } = this.state
+    const curSongInd = music.findIndex((song) => (song.fileName === activeSongFile))
 
+    if (curSongInd + 1 === music.length) {
+      this.chooseSong(music[0])
+    }
+    else {
+      this.chooseSong(music[curSongInd + 1])
+    }
   }
 
   prevSong = () => {
+    const { music } = this.props
+    if (music.length === 0) return
+    const { activeSongFile } = this.state
+    const curSongInd = music.findIndex((song) => (song.fileName === activeSongFile))
 
+    if (curSongInd - 1 < 0) {
+      this.chooseSong(music[music.length - 1])
+    }
+    else {
+      this.chooseSong(music[curSongInd - 1])
+    }
   }
 
   deleteSong = () => {
@@ -77,7 +90,7 @@ class Player extends React.Component {
     this.props.addSong(song)
   }
 
-  onDrop = (files) => {
+  addSongs = (files) => {
     files.forEach((file) => {
       this.addSong(file)
     })
@@ -94,19 +107,19 @@ class Player extends React.Component {
 
   render() {
     return (
-      <DragZone onDrop={this.onDrop}>
+      <DragZone onDrop={this.addSongs}>
         {/*<div>*/}
         {/*<AddSongButton/>*/}
         {/*<RefreshListButton/>*/}
         {/*</div>*/}
-        {/*<PlayList*/}
-        {/*music={this.props.music}*/}
-        {/*loadingList={this.props.loadingList}*/}
-        {/*activeSong={this.activeSongFile}*/}
-        {/*songState={this.state.songState}*/}
-        {/*playSong={this.chooseSong}*/}
-        {/*deleteSong={this.deleteSong}*/}
-        {/*/>*/}
+        <PlayList
+          music={this.props.music}
+          loadingList={this.props.loadingList}
+          activeSong={this.state.activeSongFile}
+          songState={this.state.songState}
+          chooseSong={this.chooseSong}
+          deleteSong={this.deleteSong}
+        />
         <MainSong
           streamUrl={this.state.activeSongUrl}
           trackTitle={this.state.activeSongTitle}
